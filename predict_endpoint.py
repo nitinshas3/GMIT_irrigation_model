@@ -15,6 +15,7 @@ FORECAST_URL = "https://api.weatherapi.com/v1/forecast.json"
 HISTORY_URL = "https://api.weatherapi.com/v1/history.json"
 HTTP_TIMEOUT = 15
 
+latest_sensor_from_device = None
 
 def _safe_get_totalprecip_mm(day_obj) -> float:
     """Defensive read of totalprecip_mm from a WeatherAPI 'day' object."""
@@ -178,3 +179,28 @@ def predict_irrigation(
 
 # Run with:
 # uvicorn predict_endpoint:app --reload
+
+latest_sensor_from_device = None
+
+@app.post("/sensor")
+def receive_sensor_data(sensor: dict):
+    """
+    Receives sensor data from the IoT device.
+    Expected JSON:
+    {
+        "temperature": <float>,
+        "humidity": <float>
+    }
+    """
+    global latest_sensor_from_device
+
+    if "temperature" not in sensor or "humidity" not in sensor:
+        return {"error": "Missing temperature or humidity"}
+
+    latest_sensor_from_device = {
+        "temperature": float(sensor["temperature"]),
+        "humidity": float(sensor["humidity"]),
+        "timestamp": datetime.now().isoformat()
+    }
+
+    return {"status": "ok", "received": latest_sensor_from_device}
