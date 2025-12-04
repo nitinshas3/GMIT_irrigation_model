@@ -1,0 +1,12 @@
+pandas
+numpy
+xgboost
+matplotlib
+joblib
+scikit-learn
+ipykernel
+uvicorn
+fastapi
+pydantic
+requests
+Query
