@@ -200,6 +200,8 @@ def receive_sensor_data(sensor: dict):
     latest_sensor_from_device = {
         "temperature": float(sensor["temperature"]),
         "humidity": float(sensor["humidity"]),
+        "soil_moisture_raw":float(sensor["soil_moisture_raw"]),
+        "soil_moisture_percent": float(sensor["soil_moisture_percent"]),
         "timestamp": datetime.now().isoformat()
     }
 
