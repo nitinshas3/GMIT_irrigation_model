@@ -217,6 +217,8 @@ def auto_predict_irrigation(sensor_data):
     result = {
         "predicted_irrigation_mm_day": round(prediction, 2),
         "message": "Auto prediction successful ✅",
+        "soil_moisture_percent":soil_moisture_percent  ,
+        "soil_temperature_c" :soil_temperature_c 
     }
     return result
 
