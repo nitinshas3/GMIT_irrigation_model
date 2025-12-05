@@ -182,7 +182,7 @@ def get_latest_sensor_data():
 
     if latest_sensor_from_device is None:
         return {"status": "no_data", "error": "No sensor data received yet"}
-
+    print(latest_sensor_from_device)
     return {"status": "ok", "data": latest_sensor_from_device}
 
 
@@ -213,6 +213,8 @@ def auto_predict_irrigation(sensor_data):
             f"{soil_temperature_c},{weather['rainfall_mm_today']},"
             f"{weather['rainfall_forecast_next_3days_mm']},{prediction}\n"
         )
+    with open("moisture_data.csv","a") as f1:
+        f1.write(f"{soil_moisture_percent}")
 
     result = {
         "predicted_irrigation_mm_day": round(prediction, 2),
@@ -220,6 +222,7 @@ def auto_predict_irrigation(sensor_data):
         "soil_moisture_percent":soil_moisture_percent  ,
         "soil_temperature_c" :soil_temperature_c 
     }
+    print(result)
     return result
 
 

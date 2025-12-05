@@ -1,9 +1,9 @@
 {
-    "temperature": 29.5,
-    "humidity": 65.0,
-    "soil_moisture_raw": 520.0,
-    "soil_moisture_percent": 42.5,
-    "timestamp": "2025-12-05T04:54:13.558222",
-    "predicted_irrigation_mm_day": 3.76,
+    "temperature": 32.4,
+    "humidity": 48.6,
+    "soil_moisture_raw": 961.0,
+    "soil_moisture_percent": 8.0,
+    "timestamp": "2025-12-05T12:59:25.885555",
+    "predicted_irrigation_mm_day": 7.28,
     "prediction_message": "Auto prediction successful \u2705"
 }
